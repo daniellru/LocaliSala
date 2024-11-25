@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096962924172",
+    "project_id": "localisala1",
+    "storage_bucket": "localisala1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096962924172:android:9438ec2d6757707c6f25a9",
+        "android_client_info": {
+          "package_name": "com.example.localisala"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWGQgP-KOOf6WJYOtPZ9s70B7hxDw_IPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
