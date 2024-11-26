@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.localisala.HomeAdapter
+import com.example.localisala.adapter.HomeAdapter
 import com.example.localisala.viewmodel.MainViewModel
 import com.example.localisala.databinding.FragmentMainBinding
+import com.example.localisala.model.University
 import com.example.localisala.repository.MainRepository
 import com.example.localisala.viewmodel.ViewModelFactory
 
@@ -36,7 +37,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         var homeAdapter = HomeAdapter{ university ->
-            navigateToUniversityFragment()
+            navigateToUniversityFragment(university)
         }
 
         val recyclerView = binding.rvUniversities
@@ -47,11 +48,11 @@ class MainFragment : Fragment() {
             universities?.let { homeAdapter.submitList(it) }
         }
 
-        viewModel.fetchData()
+        viewModel.fetchUniversityData()
     }
 
-    private fun navigateToUniversityFragment() {
-        val action = MainFragmentDirections.actionMainFragmentToUniversityFragment()
+    private fun navigateToUniversityFragment(university: University) {
+        val action = MainFragmentDirections.actionMainFragmentToUniversityFragment(university)
         if(action != null){
             findNavController().navigate(action)
         }

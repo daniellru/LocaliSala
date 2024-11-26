@@ -34,5 +34,8 @@
         <action
             android:id="@+id/action_universityFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="university"
+            app:argType="com.example.localisala.model.University" />
     </fragment>
 </navigation>

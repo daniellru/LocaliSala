@@ -1,4 +1,4 @@
-package com.example.localisala
+package com.example.localisala.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,6 @@ import com.example.localisala.model.University
 class HomeAdapter(
     private val onClick: (University) -> Unit): RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
-    lateinit var onItemClickListener: ((University)->Unit)
     private val universities = mutableListOf<University>()
 
     inner class HomeViewHolder(val itemBinding: UniversityItemBinding):RecyclerView.ViewHolder(itemBinding.root)
@@ -27,7 +26,9 @@ class HomeAdapter(
 
         holder.itemBinding.txtUniversity.text = universities[position].name
 
-        holder.itemView.setOnClickListener{ onClick(universities[position])}
+        holder.itemView.setOnClickListener{
+            onClick(universities[position])
+        }
 
     }
 

@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     alias(libs.plugins.google.gms.google.services)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -62,4 +63,6 @@ dependencies {
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
 }

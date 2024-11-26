@@ -3,6 +3,7 @@ package com.example.localisala.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.localisala.model.Course
 import com.example.localisala.model.Period
 import com.example.localisala.model.University
 import com.google.android.gms.tasks.Tasks
@@ -21,11 +22,35 @@ class MainRepository {
     suspend fun getUniversities(): List<University> {
         return try {
             val snapshot = db.collection("universidades").get().await()
-            snapshot.documents.mapNotNull { it.toObject(University::class.java) }
+            snapshot.documents.map { document->
+                University(
+                    id = document.id,
+                    name = document.getString("name") ?: ""
+                )
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             emptyList()
         }
+    }
+
+    suspend fun getCourses(documentId: String): List<Course> {
+       return try{
+           val snapshot = db.collection("universidades")
+               .document(documentId)
+               .collection("courses")
+               .get()
+               .await()
+           snapshot.documents.map { document ->
+               Course(
+                   id = document.id,
+                   name = document.getString("name") ?: ""
+               )
+           }
+       }catch (e: Exception){
+           e.printStackTrace()
+           emptyList()
+       }
     }
 }
 
