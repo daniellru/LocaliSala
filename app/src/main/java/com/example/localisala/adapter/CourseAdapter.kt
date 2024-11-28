@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.localisala.databinding.UniversityItemBinding
 import com.example.localisala.model.Course
+import com.example.localisala.model.University
 
 
 class CourseAdapter(

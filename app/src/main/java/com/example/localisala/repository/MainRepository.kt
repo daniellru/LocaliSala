@@ -52,5 +52,25 @@ class MainRepository {
            emptyList()
        }
     }
+
+    suspend fun getPeriod(universityId: String, courseId: String): List<Period>{
+        return try{
+            val snapshot = db.collection("universidades")
+                .document(universityId)
+                .collection("courses")
+                .document(courseId)
+                .collection("periodos")
+                .get()
+                .await()
+            snapshot.documents.map { document ->
+                Period(
+                    name = document.getString("name") ?:""
+                )
+            }
+        }catch (e: Exception){
+            e.printStackTrace()
+            emptyList()
+        }
+    }
 }
 

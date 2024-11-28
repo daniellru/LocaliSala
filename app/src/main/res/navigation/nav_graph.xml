@@ -15,13 +15,22 @@
             app:destination="@id/universityFragment" />
     </fragment>
     <fragment
-        android:id="@+id/subjectFragment"
-        android:name="com.example.localisala.fragments.SubjectFragment"
+        android:id="@+id/periodFragment"
+        android:name="com.example.localisala.fragments.PeriodFragment"
         android:label="fragment_subject"
-        tools:layout="@layout/fragment_subject" >
+        tools:layout="@layout/fragment_period" >
         <action
             android:id="@+id/action_subjectFragment_to_universityFragment2"
             app:destination="@id/universityFragment" />
+        <argument
+            android:name="course"
+            app:argType="com.example.localisala.model.Course" />
+        <argument
+            android:name="university"
+            app:argType="com.example.localisala.model.University" />
+        <action
+            android:id="@+id/action_periodFragment_to_subjectFragment"
+            app:destination="@id/subjectFragment" />
     </fragment>
     <fragment
         android:id="@+id/universityFragment"
@@ -29,13 +38,22 @@
         android:label="fragment_university"
         tools:layout="@layout/fragment_university" >
         <action
-            android:id="@+id/action_universityFragment_to_subjectFragment"
-            app:destination="@id/subjectFragment" />
-        <action
             android:id="@+id/action_universityFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
         <argument
             android:name="university"
             app:argType="com.example.localisala.model.University" />
+        <action
+            android:id="@+id/action_universityFragment_to_periodFragment"
+            app:destination="@id/periodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subjectFragment"
+        android:name="com.example.localisala.fragments.SubjectFragment"
+        android:label="fragment_subject"
+        tools:layout="@layout/fragment_subject" >
+        <action
+            android:id="@+id/action_subjectFragment_to_periodFragment"
+            app:destination="@id/periodFragment" />
     </fragment>
 </navigation>
