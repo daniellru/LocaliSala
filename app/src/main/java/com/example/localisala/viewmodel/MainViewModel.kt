@@ -1,5 +1,6 @@
 package com.example.localisala.viewmodel
 
+import android.location.Location
 import android.util.Log
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
@@ -13,7 +14,8 @@ import com.example.localisala.model.University
 import com.example.localisala.repository.MainRepository
 import kotlinx.coroutines.launch
 
-class MainViewModel(val repository: MainRepository): ViewModel() {
+class MainViewModel(val repository: MainRepository): ViewModel(),
+    android.widget.SearchView.OnQueryTextListener {
 
     private val _universities = MutableLiveData<List<University>>()
     val universities : LiveData<List<University>> get() = _universities
@@ -26,6 +28,10 @@ class MainViewModel(val repository: MainRepository): ViewModel() {
 
     private val _subjects = MutableLiveData<List<Subject>>()
     val subjects: LiveData<List<Subject>> get() = _subjects
+
+    private val _filteredUniversities = MutableLiveData<List<University>>()
+    val filteredUniversities: LiveData<List<University>> get() = _filteredUniversities
+
 
     fun fetchUniversityData() {
         viewModelScope.launch {
@@ -60,11 +66,20 @@ class MainViewModel(val repository: MainRepository): ViewModel() {
                 periodIdDocument
             )
             _subjects.postValue(subjectList)
-            Log.e("univerisityid","$universityIdDocument")
-            Log.e("courseid","$courseIdDocument")
-            Log.e("periodid","$periodIdDocument")
-            Log.e("subjectList","$subjectList")
         }
     }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        val query = newText.orEmpty().trim()
+        _filteredUniversities.value = _universities.value?.filter {
+            it.name.contains(query, ignoreCase = true)
+        }
+        return true
+    }
+
 
 }

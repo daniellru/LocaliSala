@@ -1,5 +1,6 @@
 package com.example.localisala.repository
 
+import android.location.Location
 import android.util.Log
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
@@ -100,7 +101,6 @@ class MainRepository() {
             emptyList()
         }
     }
-
 
 }
 

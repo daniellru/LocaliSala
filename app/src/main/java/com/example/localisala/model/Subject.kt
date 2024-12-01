@@ -1,5 +1,7 @@
 package com.example.localisala.model
 
+import com.google.firebase.firestore.GeoPoint
+
 data class Subject(
     val subjectName: String = "",
     val professor: String = "",

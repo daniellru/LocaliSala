@@ -1,11 +1,15 @@
 package com.example.localisala.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.localisala.adapter.HomeAdapter
@@ -14,6 +18,9 @@ import com.example.localisala.databinding.FragmentMainBinding
 import com.example.localisala.model.University
 import com.example.localisala.repository.MainRepository
 import com.example.localisala.viewmodel.ViewModelFactory
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
@@ -48,7 +55,14 @@ class MainFragment : Fragment() {
             universities?.let { homeAdapter.submitList(it) }
         }
 
+        viewModel.filteredUniversities.observe(viewLifecycleOwner) { universities ->
+            homeAdapter.submitList(universities)
+        }
+
+        binding.scvUniversity.setOnQueryTextListener(viewModel)
+
         viewModel.fetchUniversityData()
+
     }
 
     private fun navigateToUniversityFragment(university: University) {

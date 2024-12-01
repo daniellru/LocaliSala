@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginTop="6dp"
+    android:background="@drawable/stroke_shape"
+    android:backgroundTint="@color/blue">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img_university"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:src="@drawable/subject_svg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/mainText"
+            android:text="Subject"
+            android:textSize="30sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_university"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/expandableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/txt_subject"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/txt_professor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Professor: Dr. João"
+                android:textSize="20sp"
+                android:textColor="@color/subText"
+                android:fontFamily="@font/poppins"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/txt_bloco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bloco: A"
+                android:textSize="20sp"
+                android:textColor="@color/subText"
+                android:fontFamily="@font/poppins"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/txt_sala"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sala: 101"
+                android:textSize="20sp"
+                android:textColor="@color/subText"
+                android:fontFamily="@font/poppins"
+                android:padding="5dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    
+
+</androidx.cardview.widget.CardView>
