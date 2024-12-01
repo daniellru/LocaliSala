@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.localisala.R
 import com.example.localisala.adapter.SubjectAdapter
-import com.example.localisala.databinding.FragmentPeriodBinding
 import com.example.localisala.databinding.FragmentSubjectBinding
 import com.example.localisala.repository.MainRepository
 import com.example.localisala.viewmodel.MainViewModel

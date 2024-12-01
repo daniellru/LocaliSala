@@ -1,8 +1,5 @@
 package com.example.localisala.viewmodel
 
-import android.location.Location
-import android.util.Log
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
