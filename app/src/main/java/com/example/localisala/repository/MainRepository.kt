@@ -1,10 +1,12 @@
 package com.example.localisala.repository
 
 import android.util.Log
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.localisala.model.Course
 import com.example.localisala.model.Period
+import com.example.localisala.model.Subject
 import com.example.localisala.model.University
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.Firebase
@@ -15,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await
 
-class MainRepository {
+class MainRepository() {
 
     val db = FirebaseFirestore.getInstance()
 
@@ -64,6 +66,7 @@ class MainRepository {
                 .await()
             snapshot.documents.map { document ->
                 Period(
+                    id = document.id,
                     name = document.getString("name") ?:""
                 )
             }
@@ -72,5 +75,32 @@ class MainRepository {
             emptyList()
         }
     }
+
+    suspend fun getSubject(universityId: String, courseId: String, periodId: String): List<Subject>{
+        return try {
+            val snapshot = db.collection("universidades")
+                .document(universityId)
+                .collection("courses")
+                .document(courseId)
+                .collection("periodos")
+                .document(periodId)
+                .collection("subjects")
+                .get()
+                .await()
+            snapshot.documents.map { document ->
+                Subject(
+                    subjectName = document.getString("subjectName") ?: "",
+                    professor = document.getString("professor") ?: "",
+                    classroom = document.getDouble("sala")?.toInt() ?: 0,
+                    block = document.getDouble("bloco")?.toInt() ?: 0
+                )
+            }
+        }catch (e: Exception){
+            e.printStackTrace()
+            emptyList()
+        }
+    }
+
+
 }
 

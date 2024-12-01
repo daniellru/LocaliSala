@@ -8,7 +8,7 @@
     app:cardCornerRadius="10dp"
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
-    android:layout_marginTop="6dp"
+    android:layout_marginTop="10dp"
     android:background="@drawable/stroke_shape"
     android:backgroundTint="@color/blue">
 
@@ -21,19 +21,19 @@
             android:id="@+id/img_university"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/university_svg"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:src="@drawable/university_svg" />
 
         <TextView
             android:id="@+id/txt_university"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:textColor="@color/black"
-            android:text="UAST"
-            android:textSize="30sp"
-            android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/poppins"
+            android:text="UAST"
+            android:textColor="@color/mainText"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
 

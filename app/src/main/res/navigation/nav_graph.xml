@@ -55,5 +55,14 @@
         <action
             android:id="@+id/action_subjectFragment_to_periodFragment"
             app:destination="@id/periodFragment" />
+        <argument
+            android:name="university"
+            app:argType="com.example.localisala.model.University" />
+        <argument
+            android:name="course"
+            app:argType="com.example.localisala.model.Course" />
+        <argument
+            android:name="period"
+            app:argType="com.example.localisala.model.Period" />
     </fragment>
 </navigation>

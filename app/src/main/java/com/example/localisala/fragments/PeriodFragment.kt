@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.localisala.adapter.PeriodAdapter
 import com.example.localisala.databinding.FragmentPeriodBinding
+import com.example.localisala.model.Course
+import com.example.localisala.model.Period
+import com.example.localisala.model.University
 import com.example.localisala.repository.MainRepository
 import com.example.localisala.viewmodel.MainViewModel
 import com.example.localisala.viewmodel.ViewModelFactory
@@ -37,8 +41,8 @@ class PeriodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var periodAdapter = PeriodAdapter{ course ->
-
+        var periodAdapter = PeriodAdapter{ period ->
+            navigateToSubjectFragment(period, args.university, args.course)
         }
 
         val rv_period = binding.rvPeriod
@@ -56,6 +60,12 @@ class PeriodFragment : Fragment() {
 
     }
 
+    private fun navigateToSubjectFragment(period: Period, university: University, course: Course) {
+        val action = PeriodFragmentDirections.actionPeriodFragmentToSubjectFragment(university,course,period)
+        if(action != null){
+            findNavController().navigate(action)
+        }
+    }
 
 
     override fun onDestroyView() {
